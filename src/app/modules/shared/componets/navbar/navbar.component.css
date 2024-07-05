@@ -1,0 +1,30 @@
+.example-spacer{
+    flex: 1 1 auto
+}
+
+
+@media (min-width: 300px) and (max-width: 700px){
+    mat-toolbar{
+        background-color: darkblue;
+    }
+
+    #menuInicio{
+        display: none;
+    }
+
+    #menuProducto{
+        display: none;
+    }
+}
+
+
+
+@media(min-width: 700px){
+    mat-toolbar{
+        background-color: darkred;
+    }
+
+    #menuSecciones{
+        display: none;
+    }
+}

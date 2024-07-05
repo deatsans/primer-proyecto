@@ -1,0 +1,16 @@
+.container{
+    display: flex;
+    padding: 10px;
+    text-align: center;
+    justify-content: center;
+}
+
+.boton{
+    width: 120px;
+    margin: auto;
+}
+.fotoperfil{
+    width: 120px;
+    height: 110px;
+    border-radius: 50px;
+}
