@@ -76,7 +76,7 @@ export class InicioSesionComponent {
 
       const res = await this.servicioAuth.iniciarSesion(credenciales.email,credenciales.password)
       .then(res =>{
-        alert('¡se ha logado con exsito!')
+        alert('¡se ha logiado con exsito!')
   
         this.servicioRutas.navigate(['/inicio'])
   
