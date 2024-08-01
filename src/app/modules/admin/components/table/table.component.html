@@ -1,0 +1,40 @@
+
+<table class="table">
+    <th scope="col"ead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Imagen</th>
+            <th scope="col">Nombre </th>
+            <th scope="col">Precio</th>
+            <th scope="col">Descripcion</th>
+            <th scope="col">Categoria</th>
+            <th scope="col">Acciones</th>
+        </tr>
+    </th>
+
+    <tbody>
+        <tr *ngFor="let producto of coleccionProducto">
+            <th scope="row">1</th>
+
+            <td>
+                <img src="{{producto.Imagen}}" alt="{{producto.Alt}}">
+            </td>
+            <td>{{producto.Nombre}}</td>
+            <td>{{producto.Precio}}</td>
+            <td>{{producto.Descripcion}}</td>
+            <td>{{producto.Categoria}}</td>
+
+            <!--ACCIONES-->
+            <td>
+                <button id="bnt-edit" title="Editar" type="button" class="bnt bnt-outline-warning">
+                    <mat-icon>edit</mat-icon>
+                </button>
+            </td>
+            <td>
+                <button id="bnt-delete" title="Eliminar" type="button" class="bnt bnt-outline-danger">
+                    <mat-icon>delate</mat-icon>
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>

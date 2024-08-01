@@ -15,6 +15,9 @@ const routes: Routes = [
   },
   {
     path:"",loadChildren:()=>import('./modules/producto/producto.module').then(m=>m.ProductoModule)
+  },
+  {
+    path:"",loadChildren:()=>import('./modules/admin/admin.module').then(m=>m.AdminModule)
   }
 ];
 
