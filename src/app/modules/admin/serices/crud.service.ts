@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Producto } from 'src/app/models/producto';
 import { AngularFirestore,AngularFirestoreCollection } from '@angular/fire/compat/firestore';
+import { map } from 'rxjs';
+
 
 
 @Injectable({
@@ -29,5 +31,22 @@ export class CrudService {
         reject(error)
       }
     })
+  }
+
+  obtenerProducto(){
+    return this.productosCollection.snapshotChanges().pipe(map(Action=>Action.map(a=>a.payload.doc.data())))
+  }
+
+  eliminarProducto(idProducto: string){
+    return new Promise((resolve, reject) =>{
+      try{
+        const respuesta = this.productosCollection.doc(idProducto).delete()
+        resolve(respuesta)
+      }
+      catch(error){
+        reject(error) 
+      }
+    })
+    
   }
 }

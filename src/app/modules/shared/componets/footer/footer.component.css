@@ -36,7 +36,9 @@ body{
    padding-bottom: 10px;
    display: inline-block;
 } 
-
+*{
+    
+}
 .footer-links ul li a{
     font-size: 18px;
     text-decoration: none;
@@ -46,7 +48,7 @@ body{
     transition: all .3s ease;
 }
 .footer-links ul li a:hover{
-    color: blue;
+    color: darkred;
     padding-left: 6px;
 }
 
@@ -65,7 +67,7 @@ body{
 }
 
 .redes-link a:hover{
-    background-color: blue;
+    background-color: darkred;
 }
 
 @media(max-width: 991px){
