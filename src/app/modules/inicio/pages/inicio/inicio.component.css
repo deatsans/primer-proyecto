@@ -5,15 +5,15 @@
 }
 
 #contenItemsCarrusel{
-    border: 5px solid rgb(0, 0, 0);
-    height: 200px;
+   
+    height: 250px;
     overflow: hidden;
     
 }
 
 .itemCarrucel{
     position: relative;
-    height: 200px
+    height: 250px
     
 }
 
@@ -50,4 +50,22 @@
 
 a{
     text-decoration: none;
+}
+
+i{
+    color: orangered;
+}
+#contePuntos{
+    display: flex;
+    justify-content: space-around;
+}
+
+#contePuntos > a{
+    font-size: 1.5em;
+    font-size: none;
+}
+
+img{
+    width: 100%;
+    height: 100%;
 }
