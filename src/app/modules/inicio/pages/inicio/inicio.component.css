@@ -5,30 +5,49 @@
 }
 
 #contenItemsCarrusel{
-    border: 5px solid rgb(233, 7, 7);
+    border: 5px solid rgb(0, 0, 0);
+    height: 200px;
     overflow: hidden;
+    
 }
 
 .itemCarrucel{
     position: relative;
-    
-    border: 1px solid rgb(91, 197, 4);
     height: 200px
     
 }
 
 .tarjetasCarrucel{
-    background-color: rgb(219, 6, 6);
+    
     height: 100%;
     
 }
 
 .flechasCarrucel{
+    position: absolute;
     justify-content: space-between;
     padding: 20px;
     align-items:center ;
-    height: 50%;
-    width: 50%;
+    height: 100%;
+    width: 100%;
     display: flex;
     top: 0 
+    
+}
+
+#itemCarrucel-1{
+    background-color: darkred ;
+}
+
+#itemCarrucel-2{
+    background-color: darkblue;
+
+}
+
+#itemCarrucel-3{
+    background-color: darkgreen;
+}
+
+a{
+    text-decoration: none;
 }

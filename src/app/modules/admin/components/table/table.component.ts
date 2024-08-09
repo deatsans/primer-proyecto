@@ -18,12 +18,12 @@ export class TableComponent {
 
 
   producto = new FormGroup({
-    Nombre: new FormControl('', Validators.required),
-    Precio: new FormControl(0, Validators.required),
-    Descripcion: new FormControl('', Validators.required),
-    Categoria: new FormControl('', Validators.required),
-    Imagen: new FormControl('', Validators.required),
-    Alt: new FormControl('', Validators.required)
+    nombre: new FormControl('', Validators.required),
+    precio: new FormControl(0, Validators.required),
+    descripcion: new FormControl('', Validators.required),
+    categoria: new FormControl('', Validators.required),
+    imagen: new FormControl('', Validators.required),
+    alt: new FormControl('', Validators.required)
   })
 
   constructor(public servicioCrud: CrudService){}
@@ -38,12 +38,12 @@ export class TableComponent {
   if(this.producto.valid){
     let nuevoProducto: Producto={
       idProducto:'',
-      Nombre: this.producto.value.Nombre!,
-      Descripcion: this.producto.value.Descripcion!,
-      Precio: this.producto.value.Precio!,
-      Categoria: this.producto.value.Categoria!,
-      Imagen: this.producto.value.Imagen!,
-      Alt: this.producto.value.Alt!
+      nombre: this.producto.value.nombre!,
+      descripcion: this.producto.value.descripcion!,
+      precio: this.producto.value.precio!,
+      categoria: this.producto.value.categoria!,
+      imagen: this.producto.value.imagen!,
+      alt: this.producto.value.alt!
     }
     await this.servicioCrud.crearProducto(nuevoProducto)
     .then(producto =>{
@@ -67,6 +67,39 @@ export class TableComponent {
   })
   .catch(error =>{
     alert("no se apodido eliminar correctamente \n"+error)
+  })
+ }
+
+ mostrarEditar(productoSeleccionado: Producto){
+  this.productoSeleccionado = productoSeleccionado
+
+  this.producto.setValue({
+    nombre: productoSeleccionado.nombre,
+    precio: productoSeleccionado.precio,
+    descripcion: productoSeleccionado.descripcion,
+    categoria: productoSeleccionado.categoria,
+    imagen: productoSeleccionado.imagen,
+    alt: productoSeleccionado.alt
+  })
+ }
+
+ editarProducto(){
+  let datos: Producto= {
+    idProducto: this.productoSeleccionado.idProducto,
+    nombre: this.producto.value.nombre!,
+    precio: this.producto.value.precio!,
+    descripcion: this.producto.value.descripcion!,
+    categoria: this.producto.value.categoria!,
+    imagen: this.producto.value.imagen!,
+    alt: this.producto.value.alt!
+  }
+
+  this.servicioCrud.modificarProducto(this.productoSeleccionado.idProducto, datos)
+  .then(producto=>{
+    alert("el producto fue modificado con exito")
+  })
+  .catch(error=>{
+    alert("hubo un error al modificar el producto")
   })
  }
 }

@@ -17,21 +17,22 @@
             <th scope="row">1</th>
 
             <td>
-                <img src="{{producto.Imagen}}" alt="{{producto.Alt}}">
+                <img src="{{producto.imagen}}" alt="{{producto.alt}}" width="200px">
             </td>
-            <td>{{producto.Nombre}}</td>
-            <td>{{producto.Precio}}</td>
-            <td>{{producto.Descripcion}}</td>
-            <td>{{producto.Categoria}}</td>
+            <td>{{producto.nombre}}</td>
+            <td>{{producto.precio}}</td>
+            <td>{{producto.descripcion}}</td>
+            <td>{{producto.categoria}}</td>
 
             <!--ACCIONES-->
             <td>
-                <button id="bnt-edit" title="Editar" type="button" class="bnt bnt-outline-warning">
+                <button id="bnt-edit" title="Editar" type="button" class="bnt bnt-outline-warning" data-bs-toggle="modal" data-bs-target="#editarProducto">
                     <mat-icon>edit</mat-icon>
                 </button>
             </td>
             <td>
-                <button id="bnt-delete" title="Eliminar" type="button" class="bnt bnt-outline-danger">
+                <button id="bnt-delete" title="Eliminar" type="button" class="bnt bnt-outline-danger" data-bs-toggle="modal"
+                data-bs-target="#eliminarProducto" (click)="mostrarBorrar(producto)">
                     <mat-icon>delate</mat-icon>
                 </button>
             </td>
@@ -39,13 +40,9 @@
     </tbody>
 </table>
 
-<button type="button" class="bnt bnt-primary" data-bs-toggle="modal" data-bs-target="#agregarProducto">
-    agregar un nuevo producto
-</button>
-
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    Launch demo modal
+    agregar Producto
   </button>
   
   <!-- Modal -->
@@ -104,3 +101,21 @@
 
 
 
+  <div class="modal fade" *ngIf="modalVicubleProducto" id="eliminarProducto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">¿estas seguro de eliminar este producto?</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          {{productoSeleccionado.nombre}}
+          <img src="{{productoSeleccionado.imagen}}" alt="{{productoSeleccionado.alt}}">
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn bnt-outline-danger" data-bs-dismiss="modal" (click)="borrarProducto()">Eliminar</button>
+          <button type="button" class="btn bnt-outline-warning" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>

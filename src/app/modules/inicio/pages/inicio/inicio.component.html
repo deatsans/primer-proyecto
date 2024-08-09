@@ -1,21 +1,38 @@
-<app-card></app-card>
-
-
-
 
 <div id="contenItemsCarrusel">
-    <div class="itemCarrucel">
-        <div class="tarjetasCarrucel">A</div>
+    <div class="itemCarrucel" id="itemCarrucel-1">
+        <div class="tarjetasCarrucel" id="tarjetaCarrucel-1">A</div>
         <div class="flechasCarrucel">
-            <i>I</i>
-            <i>D</i>
+            <a href="#tarjetaCarrucel-3">
+                <i>I</i>
+            </a>
+            <a href="#tarjetaCarrucel-2">
+                <i>D</i>
+            </a>
         </div>
     </div>
-    <div class="itemCarrucel">
-        <div class="tarjetasCarrucel">B</div>
+    <div class="itemCarrucel" id="itemCarrucel-2">
+        <div class="tarjetasCarrucel" id="tarjetaCarrucel-2">B</div>
         <div class="flechasCarrucel">
-            <i>I</i>
-            <i>D</i>
+            <a href="#tarjetaCarrucel-1">
+                <i>I</i>
+            </a>
+            <a href="#tarjetaCarrucel-3">
+                <i>D</i>
+            </a>
+        </div>
+    </div>
+    <div class="itemCarrucel" id="itemCarrucel-3">
+        <div class="tarjetasCarrucel" id="tarjetaCarrucel-3">C</div>
+        <div class="flechasCarrucel">
+            <a href="#tarjetaCarrucel-2">
+                <i>I</i>
+            </a>
+            <a href="#tarjetaCarrucel-1">
+                <i>D</i>
+            </a>
         </div>
     </div>
 </div>
+
+<app-card></app-card>
