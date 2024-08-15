@@ -97,9 +97,11 @@ export class TableComponent {
   this.servicioCrud.modificarProducto(this.productoSeleccionado.idProducto, datos)
   .then(producto=>{
     alert("el producto fue modificado con exito")
+    this.producto.reset()
   })
   .catch(error=>{
     alert("hubo un error al modificar el producto")
+    this.producto.reset()
   })
  }
 }

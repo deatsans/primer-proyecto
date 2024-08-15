@@ -3,22 +3,20 @@ import { Producto } from 'src/app/models/producto';
 import { CrudService } from 'src/app/modules/admin/serices/crud.service';
 
 
-
-
-
 @Component({
-  selector: 'app-dlc',
-  templateUrl: './dlc.component.html',
-  styleUrls: ['./dlc.component.css']
+  selector: 'app-card',
+  templateUrl: './card.component.html',
+  styleUrls: ['./card.component.css']
 })
-export class DlcComponent {
-  coleccionProductos: Producto[] = []
-  coleccionDlc: Producto[] = []
+export class CardComponent {
 
-  productoSeleccionado!: Producto
+  coleccionProductos: Producto[] = []
+
+  productoSeleccionado! : Producto
+
   modalVisible: boolean = false
 
-  constructor(public servicioCrud: CrudService){}
+  constructor (public servicioCrud: CrudService){}
 
   ngOnInit(): void{
     this.servicioCrud.obtenerProducto().subscribe(producto =>{
@@ -26,17 +24,9 @@ export class DlcComponent {
     })
   }
 
-  mostrarProducto(){
-    this.coleccionProductos.forEach(producto =>{
-      if (producto.categoria === "Dlc") {
-        this.coleccionDlc.push(producto)
-      }
-    })
-  }
-
-  mortarVer(info: Producto){
+  mostrarVer(info: Producto){
     this.modalVisible = true
-    
+
     this.productoSeleccionado = info
   }
 }

@@ -11,12 +11,14 @@ import { PagesComponent } from './modules/autentificacion/pages/pages.component'
 import { environment } from 'src/environments/environments';
 import { AngularFireModule } from '@angular/fire/compat'; // Es para el Cloud Firestore
 import { AngularFireAuthModule } from '@angular/fire/compat/auth'; // Es para la Autentificación
-import { AngularFireStorageModule } from '@angular/fire/compat/storage'; // Es para la BD de archivos e imágenes
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { CardComponent } from './modules/productos/components/card/card.component'; // Es para la BD de archivos e imágenes
 
 @NgModule({
   declarations: [
     AppComponent,
-    PagesComponent
+    PagesComponent,
+    CardComponent
    
   ],
   imports: [
