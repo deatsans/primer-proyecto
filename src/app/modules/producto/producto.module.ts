@@ -9,13 +9,15 @@ import { ProductoComponent } from './pages/producto/producto.component';
 import { DlcComponent} from './pages/dlc/dlc.component';
 import { MercamsiaComponent } from './pages/mercamsia/mercamsia.component';
 import {  MicropagoComponent } from './pages/micropago/micropago.component';
+import { CardDlcComponent } from './components/card-dlc/card-dlc.component';
 
 @NgModule({
   declarations: [
     ProductoComponent,
     MercamsiaComponent,
     DlcComponent,
-    MicropagoComponent
+    MicropagoComponent,
+    CardDlcComponent
   ],
   imports: [
     CommonModule,
