@@ -1,4 +1,19 @@
 <div class="row">
+  <div class="col-lg-12" *ngIf="compraVisible" >
+    <div class="col-lg-4">
+      <div class="card text-bg-info mb-3" >
+        <ul class="list-group">
+          <h3>Utima compra:</h3>
+          <li class="list-group-item">
+            {{productoReciente}}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
     <div class="col" *ngFor="let producto of coleccionProductos">
         <div class="card" style="width: 18rem;">
             <img src="{{producto.imagen}}" class="card-img-top" alt="{{producto.alt}}">
@@ -40,7 +55,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Agregar al carrito </button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="agreagarProducto(productoSeleccionado)">Agregar  </button>
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         
       </div>

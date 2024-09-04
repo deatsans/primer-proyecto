@@ -10,6 +10,7 @@ import { DlcComponent} from './pages/dlc/dlc.component';
 import { MercamsiaComponent } from './pages/mercamsia/mercamsia.component';
 import {  MicropagoComponent } from './pages/micropago/micropago.component';
 import { CardDlcComponent } from './components/card-dlc/card-dlc.component';
+import { CardComponent } from './components/card-dlc/card/card.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { CardDlcComponent } from './components/card-dlc/card-dlc.component';
     MercamsiaComponent,
     DlcComponent,
     MicropagoComponent,
-    CardDlcComponent
+    CardDlcComponent,
+    CardComponent
   ],
   imports: [
     CommonModule,
@@ -27,7 +29,8 @@ import { CardDlcComponent } from './components/card-dlc/card-dlc.component';
     ProductoComponent,
     MercamsiaComponent,
     DlcComponent,
-    MicropagoComponent
+    MicropagoComponent,
+    CardComponent
   ]
 })
 export class ProductoModule { }
