@@ -12,7 +12,7 @@ const routes: Routes = [
     path:"producto",component:ProductoComponent
   },
   {
-    path:"mercasia",component:MercamsiaComponent
+    path:"mercamsia",component:MercamsiaComponent
   },
   {
     path:"dlc",component:DlcComponent
