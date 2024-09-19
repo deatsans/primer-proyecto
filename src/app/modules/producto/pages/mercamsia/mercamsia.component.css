@@ -172,7 +172,7 @@
     background-image: linear-gradient(
         rgba(0,0,0,0.7),
         rgba(0,0,0,0.7)),
-        url(/src/assets/wither.jpg);
+        url(/src/assets/1902-cafe.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -181,4 +181,29 @@
 }
 .servicios-content{
     text-align: center;
+}
+.servicios-content h2{
+    font-size: 55px;
+    line-height: 70px;
+    color: #f9fafc;
+    text-transform: uppercase;
+    margin-bottom: 50px;
+} 
+.servicios-content p{
+    font-size: 16px;
+    color: #a9a9a9;
+    margin-bottom: 50px;
+    padding: 0 100px;
+}
+.servicios-group{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+}
+.servicios-1{
+    padding: 0 100px;
+}
+.servicios-1 img{
+    width: 25px;
+    margin-bottom: 15px;
 }

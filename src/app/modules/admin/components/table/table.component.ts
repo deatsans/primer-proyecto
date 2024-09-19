@@ -16,13 +16,17 @@ export class TableComponent {
 
   productoSeleccionado!: Producto
 
+  nombreImagen!: string
+
+  imagen! : string
+
 
   producto = new FormGroup({
     nombre: new FormControl('', Validators.required),
     precio: new FormControl(0, Validators.required),
     descripcion: new FormControl('', Validators.required),
     categoria: new FormControl('', Validators.required),
-    imagen: new FormControl('', Validators.required),
+    //imagen: new FormControl('', Validators.required),
     alt: new FormControl('', Validators.required)
   })
 
@@ -42,16 +46,27 @@ export class TableComponent {
       descripcion: this.producto.value.descripcion!,
       precio: this.producto.value.precio!,
       categoria: this.producto.value.categoria!,
-      imagen: this.producto.value.imagen!,
+      imagen: '',
       alt: this.producto.value.alt!
     }
-    await this.servicioCrud.crearProducto(nuevoProducto)
-    .then(producto =>{
+
+    await this.servicioCrud.subirImagen(this.nombreImagen, this.imagen, "producto")
+    .then(resp=>{
+      this.servicioCrud.obtenerUrlImagen(resp)
+
+      .then(url=>{
+        this.servicioCrud.crearProducto(nuevoProducto)
+        .then(producto =>{
       alert("Ha agregado un nuevo producto :)")
-    })
-    .catch(error =>{
+          this.producto.reset()
+      })
+       .catch(error =>{
       alert("Hubo un problema al agregar un nuevo producto :(")
+        })
+        this.producto.reset()
+      })
     })
+    
   }
  }
 
