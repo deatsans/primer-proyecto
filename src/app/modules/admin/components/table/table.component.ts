@@ -55,7 +55,7 @@ export class TableComponent {
       this.servicioCrud.obtenerUrlImagen(resp)
 
       .then(url=>{
-        this.servicioCrud.crearProducto(nuevoProducto)
+        this.servicioCrud.crearProducto(nuevoProducto, url)
         .then(producto =>{
       alert("Ha agregado un nuevo producto :)")
           this.producto.reset()
@@ -76,7 +76,7 @@ export class TableComponent {
  }
 
  borrarProducto(){
-  this.servicioCrud.eliminarProducto(this.productoSeleccionado.idProducto)
+  this.servicioCrud.eliminarProducto(this.productoSeleccionado.idProducto, this.productoSeleccionado.imagen)
   .then(respuesta =>{
     alert("el producto se ha elimidao correctamnete")
   })
@@ -93,7 +93,7 @@ export class TableComponent {
     precio: productoSeleccionado.precio,
     descripcion: productoSeleccionado.descripcion,
     categoria: productoSeleccionado.categoria,
-    imagen: productoSeleccionado.imagen,
+    //imagen: productoSeleccionado.imagen,
     alt: productoSeleccionado.alt
   })
  }
@@ -105,9 +105,11 @@ export class TableComponent {
     precio: this.producto.value.precio!,
     descripcion: this.producto.value.descripcion!,
     categoria: this.producto.value.categoria!,
-    imagen: this.producto.value.imagen!,
+    imagen: this.productoSeleccionado.imagen,
     alt: this.producto.value.alt!
   }
+
+ 
 
   this.servicioCrud.modificarProducto(this.productoSeleccionado.idProducto, datos)
   .then(producto=>{

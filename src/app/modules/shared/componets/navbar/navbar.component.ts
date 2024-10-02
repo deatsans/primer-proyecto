@@ -30,20 +30,40 @@ export class NavbarComponent {
     this.logueado = true
   }
 
-  cambiarFondo(){
-    let toggle: HTMLInputElement | null = document.getElementById('toggle') as HTMLInputElement
-    let label_toggle:HTMLElement | null = document.getElementById('label_toggle') as HTMLElement
-
-    if(toggle){
-      let checked: boolean = toggle.checked
-      document.body.classList.toggle('dark', checked)
-
-      if(checked){
-        label_toggle!.innerHTML = '<i class="fa-solid fa-sun"></i>'
-      }else{
-        label_toggle!.innerHTML = '<i class="fa-solid fa-moon"></i>'
-      }
+  cambiarFondo() {
+    let toggle: HTMLInputElement | null = document.getElementById('toggle') as HTMLInputElement;
+  
+    if (toggle) {
+      let checked: boolean = toggle.checked;
+      document.body.classList.toggle('dark', checked);
+  
+      // Almacenar el estado en localStorage
+      localStorage.setItem('darkMode', JSON.stringify(checked));
     }
-
   }
+  
+  // Al cargar la página, establecer el estado del toggle
+  /*window.onload=()=>{
+    const darkMode = JSON.parse(localStorage.getItem('darkMode') || 'false');
+    (document.getElementById('toggle') as HTMLInputElement).checked = darkMode;
+    document.body.classList.toggle('dark', darkMode);
+  };*/
+  
+
+  // cambiarFondo(){
+  //   let toggle: HTMLInputElement | null = document.getElementById('toggle') as HTMLInputElement
+  //   let label_toggle:HTMLElement | null = document.getElementById('label_toggle') as HTMLElement
+
+  //   if(toggle){
+  //     let checked: boolean = toggle.checked
+  //     document.body.classList.toggle('dark', checked)
+
+  //   if(checked){
+  //       label_toggle!.innerHTML = '<i class="fa-solid fa-sun"></i>'
+  //     }else{
+  //       label_toggle!.innerHTML = '<i class="fa-solid fa-moon"></i>'
+  //     }
+  //   }
+
+  // }
 }

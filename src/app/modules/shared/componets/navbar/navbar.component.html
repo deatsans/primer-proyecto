@@ -9,16 +9,31 @@
   </mat-menu>
   <span>video tienda</span>
 
-  <button id="menuInicio" mat-button routerLink="/inicio">Inicio</button>
-  
+  <button class="ui-btn" routerLink="/inicio" id="menuInicio">
+    <span>
+      Inicio
+    </span>
+  </button>
 
   <!-- Menu desplegable: SECCIÓN DE PRODUCTOS -->
   <button id="menuProductos" mat-button [matMenuTriggerFor]="producto">Productos</button>
   <mat-menu #producto="matMenu">
-      <button mat-menu-item routerLink="/producto">General</button>
-      <button mat-menu-item routerLink="/dlc">dlc</button>
-      <button mat-menu-item routerLink="/mercamsia">mercamsia</button>
-      <button mat-menu-item routerLink="/micropago">micropago</button>
+
+    <ul class="ul">
+      <li class="li">
+        <button class="button" routerLink="/producto"><p class="p">General</p></button>
+      </li>
+      <li class="li">
+        <button class="button" routerLink="/dlc"><p class="p">Dlc</p></button>
+      </li>
+      <li class="li">
+        <button class="button"><p class="p" routerLink="/mercamsia">Mercaderia</p></button>
+      </li>
+      <li class="li">
+        <button class="button"><p class="p" routerLink="/micropago">Micropago</p></button>
+      </li>
+    </ul>
+      
   </mat-menu>
 
   <span class="example-spacer"></span>
@@ -35,8 +50,13 @@
     <mat-icon>shopping_cart</mat-icon>
   </button>
 
-  <label for="toggel" id="label_toggle"><i class="fa-solid fa-moon"></i></label>
-  <input type="checkbox" id="toggle" (click)="cambiarFondo()">
+  <div class="toggle-switch">
+    <label class="switch-label" for="toggle" id="label_toggle" >
+      <input type="checkbox" class="checkbox" id="toggle" (click)="cambiarFondo()">
+      <span class="slider"></span>
+    </label>
+  </div>  
+  
 </mat-toolbar>
 
 
