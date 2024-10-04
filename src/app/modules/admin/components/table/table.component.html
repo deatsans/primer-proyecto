@@ -26,17 +26,45 @@
 
             <!--ACCIONES-->
             <td>
-                <button id="bnt-edit" title="Editar" type="button" class="bnt bnt-outline-warning"
+                <button id="bnt-edit" title="Editar" type="button" class="btn btn-outline-warning"
                  data-bs-toggle="modal" data-bs-target="#editarProducto" (click)="mostrarEditar(producto)">
                     <mat-icon>edit</mat-icon>
                 </button>
             </td>
 
             <td>
-                <button id="bnt-delete" title="Eliminar" type="button" class="bnt bnt-outline-danger" data-bs-toggle="modal"
+                <!-- <button id="bnt-delete" title="Eliminar" type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
                 data-bs-target="#eliminarProducto" (click)="mostrarBorrar(producto)">
-                    <mat-icon>delate</mat-icon>
+                    <mat-icon>delete</mat-icon>
+                </button> -->
+                
+                <button class="deleteButton" data-bs-target="#eliminarProducto" (click)="mostrarBorrar(producto)">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 50 59"
+    class="bin"
+  >
+    <path
+      fill="#B5BAC1"
+      d="M0 7.5C0 5.01472 2.01472 3 4.5 3H45.5C47.9853 3 50 5.01472 50 7.5V7.5C50 8.32843 49.3284 9 48.5 9H1.5C0.671571 9 0 8.32843 0 7.5V7.5Z"
+    ></path>
+    <path
+      fill="#B5BAC1"
+      d="M17 3C17 1.34315 18.3431 0 20 0H29.3125C30.9694 0 32.3125 1.34315 32.3125 3V3H17V3Z"
+    ></path>
+    <path
+      fill="#B5BAC1"
+      d="M2.18565 18.0974C2.08466 15.821 3.903 13.9202 6.18172 13.9202H43.8189C46.0976 13.9202 47.916 15.821 47.815 18.0975L46.1699 55.1775C46.0751 57.3155 44.314 59.0002 42.1739 59.0002H7.8268C5.68661 59.0002 3.92559 57.3155 3.83073 55.1775L2.18565 18.0974ZM18.0003 49.5402C16.6196 49.5402 15.5003 48.4209 15.5003 47.0402V24.9602C15.5003 23.5795 16.6196 22.4602 18.0003 22.4602C19.381 22.4602 20.5003 23.5795 20.5003 24.9602V47.0402C20.5003 48.4209 19.381 49.5402 18.0003 49.5402ZM29.5003 47.0402C29.5003 48.4209 30.6196 49.5402 32.0003 49.5402C33.381 49.5402 34.5003 48.4209 34.5003 47.0402V24.9602C34.5003 23.5795 33.381 22.4602 32.0003 22.4602C30.6196 22.4602 29.5003 23.5795 29.5003 24.9602V47.0402Z"
+      clip-rule="evenodd"
+      fill-rule="evenodd"
+    ></path>
+    <path fill="#B5BAC1" d="M2 13H48L47.6742 21.28H2.32031L2 13Z"></path>
+  </svg>
+
+  <span class="tooltip">Delete</span>
                 </button>
+
             </td>
         </tr>
     </tbody>
@@ -83,7 +111,8 @@
 
             <div class="mb-3">
                 <label class="form-label">Ingrese una imagen:</label>
-                <input class="form-control" type="text" formControlName="imagen" placeholder="Ingrese vínculo de una imagen">
+                <!-- <input class="form-control" type="text" formControlName="imagen" placeholder="Ingrese vínculo de una imagen"> -->
+                 <input type="file" accept="imagen/*" (change)="cargarImagen($event)">
             </div>
 
             <div class="mb-3">
@@ -102,8 +131,7 @@
   </div>
 
   <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    ediyar
-
+    editar
   </button>
   
   <!-- Modal -->
@@ -142,7 +170,8 @@
 
             <div class="mb-3">
                 <label class="form-label">Ingrese una imagen:</label>
-                <input class="form-control" type="text" formControlName="imagen" placeholder="{{productos.imagen}}">
+                <!-- <input class="form-control" type="text" formControlName="imagen" placeholder="{{productos.imagen}}"> -->
+                <input type="file" accept="imagen/*" (change)="cargarImagen($event)">
             </div>
 
             <div class="mb-3">
@@ -152,7 +181,7 @@
         </div>
 
         <div class="modal-footer">
-            <button type="button" class="btn bnt-outline-success" data-bs-dismiss="modal" (click)="editarProducto()">Guardar</button>
+            <button type="button" class="btn btn-outline-success" data-bs-dismiss="modal" (click)="editarProducto()">Guardar</button>
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
           
         </div>
@@ -172,7 +201,9 @@
           <img src="{{productoSeleccionado.imagen}}" alt="{{productoSeleccionado.alt}}">
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn bnt-outline-danger" data-bs-dismiss="modal" (click)="borrarProducto()">Eliminar</button>
+            <button type="but ton" class="btn bnt-outline-danger" ></button><button class="button" data-bs-dismiss="modal" (click)="borrarProducto()">
+              <svg viewBox="0 0 448 512" class="svgIcon"><path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"></path></svg>
+            </button>
           <button type="button" class="btn bnt-outline-warning" data-bs-dismiss="modal">Close</button>
         </div>
       </div>

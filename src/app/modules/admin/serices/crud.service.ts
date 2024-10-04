@@ -17,7 +17,7 @@ export class CrudService {
   private respuesta! : UploadResult
 
 
-  private storege = getStorage()
+  private storage = getStorage()
 
   constructor(private database: AngularFirestore) { 
     this.productosCollection = database.collection('producto')
@@ -41,7 +41,7 @@ export class CrudService {
   }
 
   obtenerProducto(){
-    return this.productosCollection.snapshotChanges().pipe(map(Action=>Action.map(a=>a.payload.doc.data())))
+    return this.productosCollection.snapshotChanges().pipe(map(action=>action.map(a=>a.payload.doc.data())))
   }
 
 
@@ -51,12 +51,12 @@ export class CrudService {
 
 
 
-  eliminarProducto(idProducto: string, iamgenURL: string){
+  eliminarProducto(idProducto: string, imagenURL: string){
     return new Promise((resolve, reject) =>{
       try{
         const storage = getStorage()
 
-        const referenciaImagen = ref(storage, iamgenURL)
+        const referenciaImagen = ref(storage, imagenURL)
         deleteObject(referenciaImagen)
         .then((res)=>{
           const respuesta = this.productosCollection.doc(idProducto).delete()
@@ -88,7 +88,7 @@ export class CrudService {
 
   async subirImagen(nombre: string, imagen: any, ruta: string){
     try{
-      let referenciaImagen= ref(this.storege, ruta + '/'+ nombre)
+      let referenciaImagen= ref(this.storage, ruta + '/'+ nombre)
 
       this.respuesta = await uploadString(referenciaImagen, imagen, 'data_url')
       .then(resp=>{
