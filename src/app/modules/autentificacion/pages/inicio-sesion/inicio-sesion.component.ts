@@ -93,9 +93,18 @@ export class InicioSesionComponent {
           text: "Se puedo iniciate sesion con exito!",
           icon: "success"
         });
-        
+
+        //almacemamos el rol del usuarios en el serviso de autentificacion
+        this.servicioAuth.enviaRolUsuario(usuarioData.rol)
+         if(usuarioData.rol === "admin"){
+          console.log("inicio de sesion de usuario aministraodr")
+          this.servicioRutas.navigate(['/admin'])
+         }else{
+          console.log("inicio de sesion de usuario vivitante")
+          this.servicioRutas.navigate(['/inicio'])
+         }
   
-        this.servicioRutas.navigate(['/inicio'])
+        
   
       })
       .catch(err =>{
@@ -113,68 +122,5 @@ export class InicioSesionComponent {
       this.limpiarImpus()
     } 
   }
- //public ColeccionUsuarios: Usuario[] = []
- /*constructor(){
-  this.ColeccionUsuarios =[
-    {
-      uid: '0',
-    nombre: 'damian alejandro',
-    apellido: 'salas',
-    email: 'salas@gmail.com',
-    rol: 'aministrador',
-    password: '090608'
-    },
-    {
-      uid: '',
-    nombre: '',
-    apellido: '',
-    email: '',
-    rol: '',
-    password: ''
-    },
-    {
-      uid: '',
-      nombre: '',
-      apellido: '',
-      email: '',
-      rol: '',
-      password: ''
-    }
-  ]
-  }
-  usuarioIngresado: Usuario={
-    uid: '',
-    nombre: '',
-    apellido: '',
-    email: '',
-    rol: '',
-    password: ''
-  }
-    iniciarSesion(){
-    const credenciales ={
-      uid: this.usuarioIngresado.uid,
-      nombre: this.usuarioIngresado.nombre,
-      apellido: this.usuarioIngresado.apellido,
-      email: this.usuarioIngresado.email,
-      rol: this.usuarioIngresado.rol,
-      password: this.usuarioIngresado.password
-    }
-    for(let i = 0; i< this.coleccionUsuarios.length; i++){
-      const usuarios = this.ColeccionUsuarios[i]
-
-      if (usuarios.nombre === credenciales.nombre &&
-        usuarios.apellido === credenciales.apellido &&
-        usuarios.email === credenciales.email &&
-        usuarios.uid === credenciales.uid &&
-        usuarios.password === credenciales.password &&
-        usuarios.rol === credenciales.rol
-      ) {
-        alert("iniciarte sesion correctamente")
-        break
-      }else{
-        alert("se cometio un error en el inicio de sesion")
-      }
-    }
-  
-  }*/
+ 
 }

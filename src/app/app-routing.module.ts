@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { InicioComponent } from './modules/inicio/pages/inicio/inicio.component';
+import { rutaProtegidaGuard } from './guards/ruta-protegida.guard';
 
 const routes: Routes = [
   {
@@ -17,7 +18,8 @@ const routes: Routes = [
     path:"",loadChildren:()=>import('./modules/producto/producto.module').then(m=>m.ProductoModule)
   },
   {
-    path:"",loadChildren:()=>import('./modules/admin/admin.module').then(m=>m.AdminModule)
+    path:"",loadChildren:()=>import('./modules/admin/admin.module').then(m=>m.AdminModule),
+    canActivate: [rutaProtegidaGuard], data: {role: 'admin'}
   }
 ];
 

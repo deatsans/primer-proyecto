@@ -149,7 +149,7 @@ export class TableComponent {
 
     let reader = new FileReader()
 
-    if (archivo! = undefined) {
+    if (archivo != undefined) {
       reader.readAsDataURL(archivo)
       // definimos que hacemos con la funcion flecha
       reader.onloadend = () => {

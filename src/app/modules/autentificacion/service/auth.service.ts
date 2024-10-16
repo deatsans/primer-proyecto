@@ -2,11 +2,15 @@ import { Injectable } from '@angular/core';
 // Servicio de AUTENTIFICACIÓN de FIREBASE
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   // Referenciar Auth de Firebase para inicializarlo
+  private rolUsuario: string | null = null
   constructor(
     private auth: AngularFireAuth,
     private servicioFirestore: AngularFirestore
@@ -49,5 +53,24 @@ export class AuthService {
   //funcion que busca "usuarios" cuyo correo electronico coincida con el valor proporcionado
   obtenerUsuario(email: string){
     return this.servicioFirestore.collection('usuarios', ref=>ref.where('email', '==',email)).get().toPromise()
+  }
+
+  obtenerRol(uid: string): Observable < string | null>{
+    /* retornamos del servicio de firestore la coleccion de usuario, buscando por UID
+       observamos cambios en valores , mapeamos al documento de 'usuario e identificamos'
+       el atributo de rol (aun si este es nulo) 
+    */ 
+    return this.servicioFirestore.collection('usuarios').doc(uid).valueChanges()
+    .pipe(map((usuario: any)=> usuario ? usuario.rol : null))
+  }
+
+  //obtenemos el rol de la primera funcion y lo asigna a la propiedad privada local
+  enviaRolUsuario(rol : string){
+    this.rolUsuario = rol
+  }
+
+  //obtiene el rol y los retronamos (ya sean alfanumericos o nulos)
+  obtenerRolUsuario(): string | null{
+   return this.rolUsuario 
   }
 }
