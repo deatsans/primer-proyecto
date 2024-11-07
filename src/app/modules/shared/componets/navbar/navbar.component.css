@@ -222,6 +222,7 @@
   animation: chitchat linear both var(--btn-animation-duration);
 }
 
+
 @keyframes chitchat {
   0% {
     content: "#";

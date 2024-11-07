@@ -4,6 +4,11 @@
     justify-content: center;
 }
 
+@media(min-width:300px) and (max-width:700px){}
+@media(min-width:700px){}
+#content-all{
+  display: none;
+}
 h1{
     text-align: center;
 }

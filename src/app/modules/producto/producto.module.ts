@@ -11,6 +11,7 @@ import { MercamsiaComponent } from './pages/mercamsia/mercamsia.component';
 import {  MicropagoComponent } from './pages/micropago/micropago.component';
 import { CardDlcComponent } from './components/card-dlc/card-dlc.component';
 import { CardComponent } from './components/card-dlc/card/card.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,14 +24,18 @@ import { CardComponent } from './components/card-dlc/card/card.component';
   ],
   imports: [
     CommonModule,
-    ProductoRoutingModule
+    ProductoRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     ProductoComponent,
     MercamsiaComponent,
     DlcComponent,
     MicropagoComponent,
-    CardComponent
+    CardComponent,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class ProductoModule { }
