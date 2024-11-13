@@ -7,7 +7,7 @@
     <button mat-menu-item routerLink="/inicio">Inicio</button>
     <button mat-menu-item [matMenuTriggerFor]="producto">Productos</button>
   </mat-menu>
-  <span>video tienda</span>
+  <span>video games</span>
 
   <button class="ui-btn" routerLink="/inicio" id="menuInicio">
     <span>
@@ -106,7 +106,7 @@
       <button mat-menu-item (click)="cerrarSesion()" *ngIf="deslogiado">cerrar sesion</button>
   </mat-menu> -->
 
-  <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+  <button mat-icon-button routerLink="/carrito" class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
     <mat-icon>shopping_cart</mat-icon>
   </button>
 

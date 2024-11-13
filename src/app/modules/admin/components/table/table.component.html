@@ -8,6 +8,7 @@
       <th scope="col">Descripcion</th>
       <th scope="col">Categoria</th>
       <th scope="col">Acciones</th>
+      <th scope="col">stock</th>
     </tr>
   </thead>
 
@@ -139,9 +140,6 @@
   </div>
 </div>
 
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  editar
-</button>
 
 <!-- Modal -->
 <div class="modal fade" id="editarProducto" *ngFor="let productos of coleccionProducto" tabindex="-1"
@@ -174,7 +172,7 @@
             <option selected>Elija una opción</option>
             <option value="alimentacion">Alimentación</option>
             <option value="indumentaria">Indumentaria</option>
-            <option value="juguetes">Juguete</option>
+            <option value="dlc">Dlc</option>
           </select>
         </div>
 
@@ -188,6 +186,11 @@
           <label class="form-label">Ingrese texto alternativo:</label>
           <input class="form-control" type="text" formControlName="alt" placeholder="{{productos.alt}}">
         </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="form-label">ingrece el stock del producto</label>
+        <input class="form-control" type="number" formControlName="stock" placeholder="{{productos.stock}}">
       </div>
 
       <div class="modal-footer">

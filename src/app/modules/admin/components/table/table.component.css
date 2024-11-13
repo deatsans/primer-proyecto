@@ -95,7 +95,7 @@
   transition: all 0.2s;
 }
 .deleteButton:hover .bin path {
-  fill: #fff;
+  fill: #f30e0e;
 }
 .deleteButton:active {
   transform: scale(0.98);
@@ -105,7 +105,7 @@
   position: absolute;
   top: -40px;
   background-color: var(--tooltip-color);
-  color: white;
+  color: rgb(235, 20, 20);
   border-radius: 5px;
   font-size: 12px;
   padding: 8px 12px;

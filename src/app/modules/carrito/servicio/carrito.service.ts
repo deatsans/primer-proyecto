@@ -6,6 +6,7 @@ import { Pedido } from 'src/app/models/pedido';
 import { map } from 'rxjs'
 import { Producto } from 'src/app/models/producto';
 import Swal from 'sweetalert2';
+import {  Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -33,20 +34,23 @@ export class CarritoService {
   constructor(
     private servicioCrud: CrudService,
     private servicioAuth: AuthService,
-    private servicioFirestore: AngularFirestore
+    private servicioFirestore: AngularFirestore,
+    public servicioRutas: Router
   ) { 
     //creamos una subcoleccion dentro de la coleccion de usuarios y le damos ese valor a pedidosColeccion
-    this.pedidosColeccion = this.servicioFirestore.collection(`usuarios/${this.uid}/pedido`)
+    this.pedidosColeccion = this.servicioFirestore.collection(`usuarios/`)
   }
   //funcion para inicialicar el carrito 
   iniciarCart(){
     this.servicioAuth.obtenerUid().then(uid =>{
       //obtenemos el id del ususario para la coleccion
       this.uid = uid
-      if(this.uid){
-        console.log(this.uid)
+      if(this.uid === null){
+        console.error('no se obtuvo el uid. intente iniciar sesion')
+
+        this.servicioRutas.navigate(['/inicio-sesion'])
       }else{
-        console.error('no se obtuvo el uid')
+        this.pedidosColeccion = this.servicioFirestore.collection(`usuarios/${this.uid}/pedido`)
       }
     })
   }
@@ -70,6 +74,22 @@ export class CarritoService {
       Swal.fire({
         title:'¡oh no !',
         text:'ha ocurrido un error al subir su producto',
+        icon:'error'
+      })
+    }
+  }
+
+  borrarPedido(pedido:Pedido){
+    try{
+      this.pedidosColeccion.doc(pedido.idpedido).delete()
+
+      Swal.fire({
+        text:'ha borrado su pedido con exsito',
+        icon:'info'
+      })
+    }catch(error){
+      Swal.fire({
+        text:'ha ocurrido un erro: n/'+error,
         icon:'error'
       })
     }
